@@ -67,7 +67,7 @@
 										"<span class='userdanger'>You catch [I] in mid-air!</span>")
 						throw_mode_off()
 						return 1
-	..()
+	..(AM, skipcatch, hitpush, blocked, throwingdatum)
 
 
 /mob/living/carbon/attacked_by(obj/item/I, mob/living/user)
@@ -119,6 +119,9 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
+
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+		. = TRUE
 
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
