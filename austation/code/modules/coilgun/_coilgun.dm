@@ -8,12 +8,6 @@
 	initialize_dirs = DISP_DIR_FLIP
 	coilgun = TRUE
 
-	FASTDMM_PROP(\
-		pipe_interference_group = list("disposal"),\
-		pipe_group = "disposal",\
-		pipe_type = PIPE_TYPE_SIMPLE\
-	)
-
 /obj/structure/disposalpipe/coilgun/transfer(obj/structure/disposalholder/H)
 	if(LAZYLEN(H.contents))
 		return ..()
